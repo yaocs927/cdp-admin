@@ -2,6 +2,7 @@
   "name": "changdipai-admin-system",
   "description": "changdipai-admin-system",
   "author": "yaocs",
+  "version": "1.0.0",
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp pack"
