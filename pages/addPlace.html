@@ -48,7 +48,7 @@
           <ul class="nav" id="side-menu">
             <li class="sidebar-search">
               <div class="custom-search-form">
-                <p class="text-center" style="line-height: 34px; margin: 0; font-size: 18px;">管理员  <span class="text-primary">001</span></p>
+                <p class="text-center" style="line-height: 34px; margin: 0; font-size: 18px;">管理员 <span class="text-primary">001</span></p>
                 <!--<input type="text" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
@@ -243,12 +243,30 @@
                     </div>
                     <div class="confirmAdd">
                       <button type="button" class="btn btn-success btn-lg">确认添加</button>
-                      <button type="reset" class="btn btn-link">重置表单</button>
+                      <button type="button" class="btn btn-link" data-toggle="modal" data-target=".resetForm">重新填写</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--tanchukuang-->
+    <div class="modal fade resetForm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title text-danger"><i class="fa fa-exclamation-circle"></i> 清空确认</h4>
+          </div>
+          <div class="modal-body">
+            <p>确认清空当前填写内容吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary resetFormConfirm">确认</button>
           </div>
         </div>
       </div>
@@ -259,6 +277,13 @@
   <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="../vendor/metisMenu/metisMenu.min.js"></script>
   <script src="../dist/js/sb-admin-2.js"></script>
+  <script>
+    $(function(){
+      $('.resetFormConfirm').on('click', function(){
+        window.location.reload();
+      })
+    })
+  </script>
 </body>
 
 </html>

@@ -15,15 +15,6 @@
   <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="../dist/css/mystyle.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-    #dataTables-example tbody tr {
-      height: 50px;
-    }
-
-    #dataTables-example tbody tr td {
-      line-height: 34px;
-    }
-  </style>
   <!--[if lt IE 9]>
     <script src="../js/html5shiv.min.js"></script>
     <script src="../js/respond.min.js"></script>
@@ -53,7 +44,7 @@
           <ul class="nav" id="side-menu">
             <li class="sidebar-search">
               <div class="custom-search-form">
-                <p class="text-center" style="line-height: 34px; margin: 0; font-size: 18px;">管理员  <span class="text-primary">001</span></p>
+                <p class="text-center" style="line-height: 34px; margin: 0; font-size: 18px;">管理员 <span class="text-primary">001</span></p>
                 <!--<input type="text" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
@@ -96,6 +87,7 @@
           <h1 class="page-header">用户列表</h1>
         </div>
       </div>
+      <!--表格-->
       <div class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
@@ -116,41 +108,56 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="even gradeC">
+                  <tr>
                     <td><input type="checkbox"></td>
-                    <td>思南公馆思南公馆思南公馆</td>
+                    <td class="tip">思南公馆思南公馆思南公馆
+                      <div class="tipContent">
+                        <div class="panel panel-default tip-panel">
+                          <div class="panel-body">
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                     <td>闵行区</td>
                     <td>30人</td>
                     <td>已上线</td>
                     <td>1</td>
                     <td>
-                      <span class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-info" title="查看详情"><i class="fa fa-info-circle"></i></button>
-                        <button type="button" class="btn btn-danger btn-outline" title="删除"><i class="fa fa-times"></i></button>
+                      <span>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="查看详情"><i class="fa fa-info-circle"></i></button>
+                        <button type="button" class="btn btn-danger btn-outline btn-sm delete" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>
                       </span>
                     </td>
                   </tr>
-                  <!--<tr class="odd gradeX">
-                    <td>0</td>
-                    <td>蓝派</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">X</td>
-                  </tr>
-                  <tr class="even gradeC">
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td class="tip">思南公馆思南公馆思南公馆
+                      <div class="tipContent">
+                        <div class="panel panel-default tip-panel">
+                          <div class="panel-body">
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                            <p>地址：123123123</p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>闵行区</td>
+                    <td>30人</td>
+                    <td>已上线</td>
                     <td>1</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">C</td>
+                    <td>
+                      <span>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="查看详情"><i class="fa fa-info-circle"></i></button>
+                        <button type="button" class="btn btn-danger btn-outline btn-sm delete" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>
+                      </span>
+                    </td>
                   </tr>
-                  <tr class="odd gradeA">
-                    <td>2</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">A</td>
-                  </tr>-->
                 </tbody>
               </table>
               <div class="well">
@@ -166,6 +173,24 @@
         </div>
       </div>
     </div>
+    <!--tanchukuang-->
+    <div class="modal fade deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title text-danger"><i class="fa fa-exclamation-circle"></i> 删除确认</h4>
+          </div>
+          <div class="modal-body">
+            <p>确认删除该场地吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -174,23 +199,7 @@
   <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
   <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
   <script src="../dist/js/sb-admin-2.js"></script>
-  <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true,
-            "language": {
-              "lengthMenu": "每页 _MENU_ 条",
-              "info": "第 _START_ 条到 _END_ 条，共 _TOTAL_ 条",
-              "paginate": {
-                "previous": "上一页",
-                "next": "下一页"
-              },
-              "zeroRecords": "没有匹配的关键字，请检查关键字！",
-              "pageLength": 50
-            }
-        });
-    });
-    </script>
+  <script src="../dist/js/global.js"></script>
 </body>
 
 </html>
