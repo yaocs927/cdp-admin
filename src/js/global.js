@@ -1,6 +1,20 @@
 $(function () {
   // 表格插件
-  $('#dataTables-example').DataTable({
+  $('#dataTables').DataTable({
+    responsive: true,
+    "language": {
+      "lengthMenu": "每页 _MENU_ 条",
+      "info": "第 _START_ 条到 _END_ 条，共 _TOTAL_ 条",
+      "paginate": {
+        "previous": "上一页",
+        "next": "下一页"
+      },
+      "zeroRecords": "没有匹配的关键字，请检查关键字！",
+      "pageLength": 50
+    }
+  });
+
+  $('#dataTables1').DataTable({
     responsive: true,
     "language": {
       "lengthMenu": "每页 _MENU_ 条",
