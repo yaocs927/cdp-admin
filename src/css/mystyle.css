@@ -39,3 +39,7 @@ body {
   border: 7px solid transparent;
   border-top-color: #bbb;
 }
+
+.operateBtn > button {
+  margin-right: 5px;
+}
