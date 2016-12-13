@@ -83,12 +83,13 @@ $(function () {
   // 删除确认
   $('#deleteConfirmBtn').on('click', function () {
     var id = $(this).attr('data-curid');
-    deleteConfirm(id);
+    deleteData(id);
+    $('.dataList').find('tr[id=' + id + ']').remove();
   });
 
 });
 
-function deleteConfirm(id) {
-  $('.dataList').find('tr[id=' + id + ']').remove();
 
+function deleteData(id) {
+  
 }
