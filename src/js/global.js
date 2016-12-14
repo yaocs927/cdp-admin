@@ -73,23 +73,19 @@ $(function () {
   })
 
 
-  // 删除数据
-  $('body').on('click', '.delete', function () {
-    var curid = $(this).parents('tr').attr('id');
-    console.log(curid);
-    $('#deleteConfirmBtn').attr('data-curid', curid);
+  //
+  $('.dataList tbody').on('mouseover', '.changeTD', function () {
+    $(this).find('.changeBtn').show();
+  });
+  $('.dataList tbody').on('mouseout', '.changeTD', function () {
+    $(this).find('.changeBtn').hide();
   });
 
-  // 删除确认
-  $('#deleteConfirmBtn').on('click', function () {
-    var id = $(this).attr('data-curid');
-    deleteData(id);
-    $('.dataList').find('tr[id=' + id + ']').remove();
-  });
+
 
 });
 
 
 function deleteData(id) {
-  
+
 }

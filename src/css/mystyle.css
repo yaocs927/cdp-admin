@@ -2,8 +2,13 @@ body {
   font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#dataTables-example tbody tr {
-  height: 50px;
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+  vertical-align: middle;
 }
 
 #dataTables-example tbody tr td {
@@ -40,6 +45,19 @@ body {
   border-top-color: #bbb;
 }
 
-.operateBtn > button {
+.operateBtn>button,
+.operateBtn>a {
   margin-right: 5px;
+}
+
+.changeTD {
+  position: relative;
+}
+
+.changeBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
 }

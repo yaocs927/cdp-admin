@@ -8,6 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>场地派后台管理</title>
+  <link href="./css/reset.css" rel="stylesheet" type="text/css">
   <link href="./css/lib/bootstrap.min.css" rel="stylesheet">
   <link href="./css/lib/metisMenu.min.css" rel="stylesheet">
   <link href="./css/lib/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -24,7 +25,7 @@
 <body>
   <div id="wrapper">
     <!-- 导航 -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
       <div class="navbar-header">
         <a class="navbar-brand" href="index.html">场地派后台管理系统</a>
       </div>
@@ -39,7 +40,7 @@
         </li>
       </ul>
       <!--侧导航-->
-      <div class="navbar-default sidebar" role="navigation">
+      <div class="navbar-default sidebar">
         <div class="sidebar-nav navbar-collapse">
           <ul class="nav" id="side-menu">
             <li class="sidebar-search">
@@ -83,6 +84,7 @@
     </nav>
     <!-- 页面内容 -->
     <div id="page-wrapper">
+      <!--标题-->
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">场地列表</h1>
@@ -101,97 +103,95 @@
                   <tr>
                     <th><input type="checkbox" class="selectAll"></th>
                     <th>场地名</th>
-                    <th>地址</th>
+                    <th>地区</th>
                     <th>人数</th>
                     <th>状态</th>
                     <th>权重</th>
                     <th>操作</th>
                   </tr>
                 </thead>
-                <tbody id="getPlaceList">
-                  <!--<tr data-id="1">
-                    <td><input type="checkbox"></td>
-                    <td class="tip">111111111111111111
-                      <div class="tipContent">
-                        <div class="panel panel-default tip-panel">
-                          <div class="panel-body">
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>闵行区</td>
-                    <td>30人</td>
-                    <td>已上线</td>
-                    <td>1</td>
-                    <td>
-                      <span>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="查看详情"><i class="fa fa-info-circle"></i></button>
-                        <button type="button" class="btn btn-danger btn-outline btn-sm delete" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr data-id="2">
-                    <td><input type="checkbox"></td>
-                    <td class="tip">思南公馆思南公馆思南公馆
-                      <div class="tipContent">
-                        <div class="panel panel-default tip-panel">
-                          <div class="panel-body">
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                            <p>地址：123123123</p>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>闵行区</td>
-                    <td>30人</td>
-                    <td>已上线</td>
-                    <td>1</td>
-                    <td>
-                      <span>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="查看详情"><i class="fa fa-info-circle"></i></button>
-                        <button type="button" class="btn btn-danger btn-outline btn-sm delete" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>-->
+                <tbody>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-            
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default">Go!</button>
-      </span>
-      
     </div>
-    <!--tanchukuang-->
-    <div class="modal fade deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <!--删除确认弹框-->
+    <div class="modal fade deleteConfirm" tabindex="-1">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             <h4 class="modal-title text-danger"><i class="fa fa-exclamation-circle"></i> 删除确认</h4>
           </div>
           <div class="modal-body">
             <p>确认删除该场地吗？</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-link" id="deleteCancelBtn" data-dismiss="modal">取消</button>
             <button type="button" class="btn btn-primary" id="deleteConfirmBtn" data-dismiss="modal">确认</button>
           </div>
         </div>
       </div>
     </div>
+    <!--改变状态弹框-->
+    <div class="modal fade changeStateConfirm" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> 场地状态修改</h4>
+          </div>
+          <div class="modal-body">
+            <div class="btn-group" id="changeStateRadio" data-toggle="buttons">
+              <label class="btn btn-success btn-outline">
+                <input type="radio" class="toggle" value="1" name="placeState"> 上线
+              </label>
+              <label class="btn btn-danger btn-outline">
+                <input type="radio" class="toggle" value="2" name="placeState"> 审核
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" id="changeStateCancelBtn" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="changeStateConfirmBtn" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--改变权重弹框-->
+    <div class="modal fade changeWeightConfirm" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> 场地状态修改</h4>
+          </div>
+          <div class="modal-body">
+            <div class="btn-group" id="changeWeightRadio" data-toggle="buttons">
+              <label class="btn btn-primary btn-outline">
+                <input type="radio" class="toggle" value="10" name="placeWeight"> 10
+              </label>
+              <label class="btn btn-primary btn-outline">
+                <input type="radio" class="toggle" value="100" name="placeWeight"> 100
+              </label>
+              <label class="btn btn-primary btn-outline">
+                <input type="radio" class="toggle" value="1000" name="placeWeight"> 1000
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" id="changeWeightCancelBtn" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="changeWeightConfirmBtn" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!--<script data-main="./js/placeListMain" src="./js/lib/require.js"></script>-->
   <script src="./js/lib/jquery.min.js"></script>
+  <script src="http://rap.taobao.org/rap.plugin.js?projectId=11329"></script>
   <script src="./js/lib/bootstrap.min.js"></script>
   <script src="./js/lib/metisMenu.min.js"></script>
   <script src="./js/lib/jquery.dataTables.min.js"></script>
@@ -201,7 +201,6 @@
   <script src="./js/data/placeList.js"></script>
   <script src="./js/global.js"></script>
   <!--<script src="./js/tipPanel.js"></script>-->
-
 </body>
 
 </html>
