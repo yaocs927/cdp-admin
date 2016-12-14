@@ -61,3 +61,7 @@ body {
   transform: translateY(-50%);
   display: none;
 }
+
+.mt40 {
+  margin-top: 40px;
+}

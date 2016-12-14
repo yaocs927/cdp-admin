@@ -28,7 +28,7 @@
 <body>
   <div id="wrapper">
     <!-- 导航 -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
       <div class="navbar-header">
         <a class="navbar-brand" href="index.html">场地派后台管理系统</a>
       </div>
@@ -43,7 +43,7 @@
         </li>
       </ul>
       <!--侧导航-->
-      <div class="navbar-default sidebar" role="navigation">
+      <div class="navbar-default sidebar" >
         <div class="sidebar-nav navbar-collapse">
           <ul class="nav" id="side-menu">
             <li class="sidebar-search">
@@ -101,12 +101,47 @@
               <div class="row">
                 <div class="col-lg-6 col-lg-offset-3">
                   <form role="form">
+
+                    <legend class="text-primary">场地基本信息:</legend>
                     <!--场地名-->
                     <div class="form-group">
                       <label class="control-label">场地名</label>
                       <input class="form-control" type="text">
                       <p class="help-block small">请填入场地名名称，最多20字。</p>
                     </div>
+                    <!--场地地址-->
+                    <div class="form-group">
+                      <label>场地地址</label>
+                      <input class="form-control">
+                      <p class="help-block small">请填入场地详细地址。</p>
+                    </div>
+                    <!--场地简介-->
+                    <div class="form-group">
+                      <label>场地简介</label>
+                      <textarea class="form-control" rows="10"></textarea>
+                      <p class="help-block small">请填入场地简介。</p>
+                    </div>
+                    <!--场地大小/人数-->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label>场地容纳人数</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">人左右</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <label>场地面积</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">平方米</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <legend class="mt40 text-primary">场地搜索条件:</legend>
                     <!--场地位置-->
                     <div class="form-group">
                       <div class="row">
@@ -142,18 +177,6 @@
                         </div>
                       </div>
                     </div>
-                    <!--场地地址-->
-                    <div class="form-group">
-                      <label>场地地址</label>
-                      <input class="form-control">
-                      <p class="help-block small">请填入场地详细地址。</p>
-                    </div>
-                    <!--场地简介-->
-                    <div class="form-group">
-                      <label>场地简介</label>
-                      <textarea class="form-control" rows="10"></textarea>
-                      <p class="help-block small">请填入场地简介。</p>
-                    </div>
                     <!--场地类型-->
                     <div class="form-group">
                       <label>场地类型</label>
@@ -161,28 +184,56 @@
                         <div class="col-lg-3">
                           <div class="checkbox">
                             <label class="checkbox-inline">
-                              <input type="checkbox" value="">Checkbox 1
+                              <input type="checkbox" value="朋友聚会">朋友聚会
                             </label>
                           </div>
                         </div>
                         <div class="col-lg-3">
                           <div class="checkbox">
                             <label class="checkbox-inline">
-                              <input type="checkbox" value="">Checkbox 1
+                              <input type="checkbox" value="轰趴">轰趴
                             </label>
                           </div>
                         </div>
                         <div class="col-lg-3">
                           <div class="checkbox">
                             <label class="checkbox-inline">
-                              <input type="checkbox" value="">Checkbox 1
+                              <input type="checkbox" value="沙龙活动">沙龙活动
                             </label>
                           </div>
                         </div>
                         <div class="col-lg-3">
                           <div class="checkbox">
                             <label class="checkbox-inline">
-                              <input type="checkbox" value="">Checkbox 1
+                              <input type="checkbox" value="公司聚会">公司聚会
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="checkbox">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" value="朋友聚会">朋友聚会
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="checkbox">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" value="轰趴">轰趴
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="checkbox">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" value="沙龙活动">沙龙活动
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="checkbox">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" value="公司聚会">公司聚会
                             </label>
                           </div>
                         </div>
@@ -222,25 +273,6 @@
                         </div>
                       </div>
                     </div>
-                    <!--场地大小-->
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-lg-6">
-                          <label>场地容纳人数</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-addon">人左右</span>
-                          </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>场地面积</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-addon">平方米</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     <div class="confirmAdd">
                       <button type="button" class="btn btn-success btn-lg">确认添加</button>
                       <button type="button" class="btn btn-link" data-toggle="modal" data-target=".resetForm">重新填写</button>
@@ -254,7 +286,7 @@
       </div>
     </div>
     <!--tanchukuang-->
-    <div class="modal fade resetForm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal fade resetForm" tabindex="-1">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">

@@ -87,7 +87,7 @@ $(function () {
       className: 'placeWeight changeTD',
       render: function (data, type, row, meta) {
         // if (data === 1) {
-        var cur_el = '<span class="text-primary">' + data + '</span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改权重" data-toggle="modal" data-target=".changeWeightConfirm">修改</i></button>';
+        var cur_el = '<span class="text-primary"><b>' + data + '</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改权重" data-toggle="modal" data-target=".changeWeightConfirm">修改</i></button>';
         // } else {
         // var cur_el = '<span class="text-danger"><b>审核中</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态">修改</i></button>'
         // }
