@@ -1,36 +1,5 @@
 $(function () {
-  // 表格插件
-  $('#dataTables').DataTable({
-    responsive: true,
-    "language": {
-      "lengthMenu": "每页 _MENU_ 条",
-      "info": "第 _START_ 条到 _END_ 条，共 _TOTAL_ 条",
-      "paginate": {
-        "previous": "上一页",
-        "next": "下一页"
-      },
-      "zeroRecords": "没有匹配的关键字，请检查关键字！",
-      "pageLength": 50
-    }
-  });
-
-  $('#dataTables1').DataTable({
-    responsive: true,
-    "language": {
-      "lengthMenu": "每页 _MENU_ 条",
-      "info": "第 _START_ 条到 _END_ 条，共 _TOTAL_ 条",
-      "paginate": {
-        "previous": "上一页",
-        "next": "下一页"
-      },
-      "zeroRecords": "没有匹配的关键字，请检查关键字！",
-      "pageLength": 50
-    }
-  });
-
-  // tooltip
-  $('.dataList tbody').find("button[data-toggle='tooltip']").tooltip();
-
+  
   // 列表更多内容 panel
   $('.dataList tbody').on('mouseover', '.tip', function () {
     var cur_panel = $(this).find('.tipContent');
@@ -47,7 +16,6 @@ $(function () {
   });
   $('.dataList tbody').on('mouseout', '.tip', function () {
     $(this).find('.tipContent').stop().fadeOut();
-    // $(this).parent('tr').siblings('tr').find('.tipContent').stop().fadeOut();
   });
 
   // 选择数据
@@ -73,7 +41,7 @@ $(function () {
   })
 
 
-  //
+  // 显示修改按钮
   $('.dataList tbody').on('mouseover', '.changeTD', function () {
     $(this).find('.changeBtn').show();
   });
@@ -81,11 +49,4 @@ $(function () {
     $(this).find('.changeBtn').hide();
   });
 
-
-
 });
-
-
-function deleteData(id) {
-
-}

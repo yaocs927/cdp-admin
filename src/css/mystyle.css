@@ -11,10 +11,6 @@ body {
   vertical-align: middle;
 }
 
-#dataTables-example tbody tr td {
-  line-height: 34px;
-}
-
 .tip {
   position: relative;
 }
@@ -45,6 +41,11 @@ body {
   border-top-color: #bbb;
 }
 
+.confirmAdd {
+  margin: 60px 0 60px;
+  text-align: center;
+}
+
 .operateBtn>button,
 .operateBtn>a {
   margin-right: 5px;
@@ -64,4 +65,10 @@ body {
 
 .mt40 {
   margin-top: 40px;
+}
+
+.addNewOne {
+  width: 100px;
+  transform: translateY(-2px);
+  font-size: 12px;
 }

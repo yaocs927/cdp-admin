@@ -121,7 +121,7 @@ $(function () {
   $('#deleteConfirmBtn').on('click', function () {
     var id = $(this).attr('data-curid');
     deleteData(id);
-    // $('.dataList').find('tr[id=' + id + ']').remove();
+    $('.deleteConfirm').modal('hide');
     table.ajax.reload();
     $('#deleteConfirmBtn').removeAttr('data-curid');
   });
