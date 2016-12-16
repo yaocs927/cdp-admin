@@ -42,8 +42,6 @@ $(function () {
     }, {
       "data": "name"
     }, {
-      "data": "area"
-    }, {
       "data": "number"
     }, {
       "data": "status"
@@ -67,12 +65,13 @@ $(function () {
           '<div class="panel-body">' +
           '<p>地址：' + row.address + '</p>' +
           '<p>面积：' + row.area + '平方米</p>' +
+          '<p>关键词：' + row.keyword + '</p>' +
           '</div>' +
           '</div>' +
           '</div>';
       }
     }, {
-      targets: [4],
+      targets: [3],
       className: 'placeState changeTD',
       render: function (data, type, row, meta) {
         if (data === 1) {
@@ -83,7 +82,7 @@ $(function () {
         return cur_el;
       }
     }, {
-      targets: [5],
+      targets: [4],
       className: 'placeWeight changeTD',
       render: function (data, type, row, meta) {
         // if (data === 1) {
@@ -94,7 +93,7 @@ $(function () {
         return cur_el;
       }
     }, {
-      targets: [6],
+      targets: [5],
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +

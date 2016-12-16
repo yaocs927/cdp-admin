@@ -67,6 +67,19 @@ body {
   margin-top: 40px;
 }
 
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mtb5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .addNewOne {
   width: 100px;
   transform: translateY(-2px);
