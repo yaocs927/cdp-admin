@@ -130,7 +130,6 @@ $(function () {
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<a href="../src/placeDetail.html?id=' + row.id + '" class="btn btn-info btn-sm" title="查看详情"><i class="fa fa-info-circle"></i></a>' +
           '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>' +
           '</span>';
       }
@@ -164,7 +163,7 @@ $(function () {
   // 确认新增场地类型
   // ================
   $('#addSitetypeConfirmBtn').on('click', function () {
-    var cur_text = $('#addSitetypeText').val();
+    var cur_text = $.trim($('#addSitetypeText').val());
     $('#addSitetypeText').focus(function () {
       $('.sitetypeTipText').html('请填入场地类型名称，最多6字。')
     })
@@ -197,8 +196,8 @@ $(function () {
   // 确认新增场地设施
   // ================
   $('#addSitefacilityConfirmBtn').on('click', function () {
-    var cur_text = $('#addSitefacilityText').val();
-    var curView_text = $('#addSitefacilityText_view').val();
+    var cur_text = $.trim($('#addSitefacilityText').val());
+    var curView_text = $.trim($('#addSitefacilityText_view').val());
     $('#addSitefacilityText').focus(function () {
       $('.sitefacilityTipText').html('请填入场地设施名称，最多6字。')
     });
@@ -210,13 +209,12 @@ $(function () {
     } else if (curView_text == '') {
       $('.sitefacilityTipText_view').html('<span class="text-danger"><b>请填入样式！</b></span>');
     } else {
-      console.log(1);
       // $.ajax({
       //   url: '/aaa?name=' + cur_text + '?tag=amenity?view=' + curView_text,
       //   type: 'POST',
       //   success: function (res) {
       //     if (errcode === 0) {
-      //       // table1.ajax.reload();
+      //       // table2.ajax.reload();
       //     } else {
       //       alert('未成功添加，请检查！');
       //     }

@@ -58,7 +58,6 @@ $(function () {
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<a href="../src/placeDetail.html?id=' + row.id + '" class="btn btn-info btn-sm" title="查看详情"><i class="fa fa-info-circle"></i></a>' +
           '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>' +
           '</span>';
       }
@@ -128,7 +127,6 @@ $(function () {
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<a href="../src/placeDetail.html?id=' + row.id + '" class="btn btn-info btn-sm" title="查看详情"><i class="fa fa-info-circle"></i></a>' +
           '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>' +
           '</span>';
       }
@@ -160,6 +158,73 @@ $(function () {
     table2.ajax.reload();
     $('#deleteConfirmBtn').removeAttr('data-curid');
   });
+
+
+  // ================
+  // 确认新增城市
+  // ================
+  $('#addCityConfirmBtn').on('click', function () {
+    var cur_text = $.trim($('#addCityText').val());
+    $('#addCityText').focus(function () {
+      $('.CityTipText').html('请填入城市名称。')
+    })
+    if (cur_text == '') {
+      $('.CityTipText').html('<span class="text-danger"><b>无法发布空城市！</b></span>')
+    } else {
+      // $.ajax({
+      //   url: '/aaa?name=' + cur_text + '?tag=',
+      //   type: 'POST',
+      //   success: function (res) {
+      //     if (errcode === 0) {
+      //       // table1.ajax.reload();
+      //     } else {
+      //       alert('未成功添加，请检查！');
+      //     }
+      //   },
+      //   error: function () {
+      //     alert('服务器错误，请刷新重试！');
+      //   }
+      // });
+      $("#addCityConfirm").modal("hide");
+    }
+  });
+  $('#addCityConfirm').on('hidden.bs.modal', function (e) {
+    $('#addCityText').prop('value', '');
+    $('.CityTipText').html('请填入场地类型名称，最多6字。')
+  })
+
+  // ================
+  // 确认新增行政区/商圈
+  // ================
+  $('#addDistrictConfirmBtn').on('click', function () {
+    var cur_text = $.trim($('#addDistrictText').val());
+    $('#addDistrictText').focus(function () {
+      $('.districtTipText').html('请填入行政区/商圈名称。')
+    });
+    if (cur_text == '') {
+      $('.districtTipText').html('<span class="text-danger"><b>不可为空！</b></span>');
+    } else {
+      // $.ajax({
+      //   url: '/aaa?name=' + cur_text + '?tag=amenity?view=' + curView_text,
+      //   type: 'POST',
+      //   success: function (res) {
+      //     if (errcode === 0) {
+      //       // table2.ajax.reload();
+      //     } else {
+      //       alert('未成功添加，请检查！');
+      //     }
+      //   },
+      //   error: function () {
+      //     alert('服务器错误，请刷新重试！');
+      //   }
+      // });
+      $("#addDistrictConfirm").modal("hide");
+    }
+  });
+  $('#addDistrictConfirm').on('hidden.bs.modal', function (e) {
+    $('#addDistrictText').prop('value', '');
+    $('.districtTipText').html('请填入行政区/商圈名称。');
+  })
 
 
 

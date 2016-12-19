@@ -11,6 +11,33 @@ body {
   vertical-align: middle;
 }
 
+/*通用间距*/
+.mt40 {
+  margin-top: 40px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mtb5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.width100 {
+  width: 100px;
+}
+
+/*表格浮动层*/
 .tip {
   position: relative;
 }
@@ -63,25 +90,16 @@ body {
   display: none;
 }
 
-.mt40 {
-  margin-top: 40px;
-}
-
-.mb16 {
-  margin-bottom: 16px;
-}
-
-.mb5 {
-  margin-bottom: 5px;
-}
-
-.mtb5 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 .addNewOne {
   width: 100px;
   transform: translateY(-2px);
   font-size: 12px;
+}
+
+.place-price-info-btn {
+  font-size: 0;
+}
+
+.priceInfoDeleteBtn {
+transform: translate(10px, -6px);
 }
