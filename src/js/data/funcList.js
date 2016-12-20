@@ -60,7 +60,7 @@ $(function () {
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>' +
+          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="glyphicon glyphicon-trash"></i></button>' +
           '</span>';
       }
     }],
@@ -130,7 +130,7 @@ $(function () {
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="fa fa-trash-o"></i></button>' +
+          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="glyphicon glyphicon-trash"></i></button>' +
           '</span>';
       }
     }],

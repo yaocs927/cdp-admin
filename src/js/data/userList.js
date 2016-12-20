@@ -1,5 +1,5 @@
 $(function () {
-  var table = $('#placeList-dataTables').DataTable({
+  var table = $('#user-dataTables').DataTable({
     pageLength: 50, // 每页数据量
     language: { // 国际化
       emptyTable: '暂无对应的数据',
@@ -21,12 +21,11 @@ $(function () {
     },
     order: [],
     ajax: {
-      
-      // url: './js/data/placeList.json',
-      url: '/services',
+      url: '/users',
       dataSrc: function (data) {
+        console.log(data)
         if (data.errcode === 0) {
-          return data.services;
+          return data.users;
         } else {
           alert('数据加载错误，请刷新页面！');
         }
@@ -40,13 +39,13 @@ $(function () {
     columns: [{
       "data": "id"
     }, {
+      "data": "id"
+    }, {
       "data": "name"
     }, {
-      "data": "number"
+      "data": "mobile"
     }, {
       "data": "status"
-    }, {
-      "data": "weight"
     }, {
       "data": "id"
     }],
@@ -57,21 +56,7 @@ $(function () {
         return '<input type="checkbox" class="selectCur">';
       }
     }, {
-      targets: [1],
-      className: 'tip',
-      render: function (data, type, row, meta) {
-        return data + '<div class="tipContent">' +
-          '<div class="panel panel-default tip-panel">' +
-          '<div class="panel-body">' +
-          '<p>地址：' + row.address + '</p>' +
-          '<p>面积：' + row.area + '平方米</p>' +
-          '<p>关键词：' + row.keyword + '</p>' +
-          '</div>' +
-          '</div>' +
-          '</div>';
-      }
-    }, {
-      targets: [3],
+      targets: [4],
       className: 'placeState changeTD',
       render: function (data, type, row, meta) {
         if (data === 1) {
@@ -82,22 +67,11 @@ $(function () {
         return cur_el;
       }
     }, {
-      targets: [4],
-      className: 'placeWeight changeTD',
-      render: function (data, type, row, meta) {
-        // if (data === 1) {
-        var cur_el = '<span class="text-primary"><b>' + data + '</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改权重" data-toggle="modal" data-target=".changeWeightConfirm">修改</i></button>';
-        // } else {
-        // var cur_el = '<span class="text-danger"><b>审核中</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态">修改</i></button>'
-        // }
-        return cur_el;
-      }
-    }, {
       targets: [5],
       orderable: false,
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
-          '<a href="../src/placeDetail.html?id=' + row.id + '" class="btn btn-info btn-sm" title="查看详情"><i class="glyphicon glyphicon-list-alt"></i></a>' +
+          '<button type="button" class="btn btn-info btn-sm" title="修改用户信息"><i class="glyphicon glyphicon-pencil"></i></button>' +
           '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="glyphicon glyphicon-trash"></i></button>' +
           '</span>';
       }

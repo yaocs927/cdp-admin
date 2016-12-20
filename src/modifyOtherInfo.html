@@ -52,7 +52,7 @@
               <a href="#"><i class="fa fa-th-list fa-fw"></i> 场地管理<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 <li><a href="placeList.html">场地列表</a></li>
-                <li><a href="addPlace.html">新增场地</a></li>
+                <li class="active"><a href="addPlace.html">新增场地</a></li>
               </ul>
             </li>
             <li>
@@ -81,12 +81,12 @@
     <!-- 页面内容 -->
     <div id="page-wrapper">
       <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header">场地详情</h1>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h1 class="page-header">修改场地其他信息</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12">
           <div class="panel panel-default">
             <!--<div class="panel-heading">
               所有场地
@@ -96,65 +96,12 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                   <form role="form">
                     <!-- ============================================= -->
-                    <legend class="text-primary">场地基本信息:</legend>
-                    <!--场地名-->
-                    <div class="form-group">
-                      <label class="control-label">场地名</label>
-                      <input class="form-control" type="text" readonly value="场地名场地名场地名场地名场地名场地名场地名场地">
-                    </div>
-                    <!--场地位置-->
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-lg-4">
-                          <label>城市</label>
-                          <input class="form-control" type="text" readonly value="上海">
-                        </div>
-                        <div class="col-lg-4">
-                          <label>区/县</label>
-                          <input class="form-control" type="text" readonly value="闵行区">
-                        </div>
-                        <div class="col-lg-4">
-                          <label>商圈</label>
-                          <input class="form-control" type="text" readonly value="闵行商圈">
-                        </div>
-                      </div>
-                    </div>
-                    <!--场地地址-->
-                    <div class="form-group">
-                      <label>场地地址</label>
-                      <input class="form-control" type="text" readonly value="场地地址场地地址场地地址场地地址场地地址">
-                    </div>
-                    <!--场地简介-->
-                    <div class="form-group">
-                      <label>场地简介</label>
-                      <textarea class="form-control" rows="10" readonly>场地简介场地简介场地简介场地简介场地简介场地简介场地简介场地简介</textarea>
-                      <p class="help-block small"></p>
-                    </div>
-                    <!--场地大小/人数-->
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-lg-6">
-                          <label>场地容纳人数</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" readonly value="20">
-                            <span class="input-group-addon">人左右</span>
-                          </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>场地面积</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" readonly value="2000">
-                            <span class="input-group-addon">平方米</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ============================================= -->
-                    <legend class="mt40 text-primary">场地其他信息:</legend>
+                    <legend class="text-primary">场地其他信息:</legend>
                     <!--场地关键词-->
                     <div class="form-group">
                       <label class="control-label">场地关键词</label>
-                      <input class="form-control" type="text" readonly value="关键词关键词关键词关键词关键词">
+                      <input class="form-control" type="text" placeholder="关键词1,关键词2,...关键词N">
+                      <p class="help-block small">请填入场地关键词，多个请用英文逗号（,）隔开。</p>
                     </div>
                     <!--场地类型-->
                     <div class="form-group">
@@ -252,78 +199,10 @@
                         </div>
                       </div>
                     </div>
-                    <!-- ============================================= -->
-                    <legend class="mt40 text-primary place-price-info">场地价目信息: </legend>
-                    <!--价格详细信息-->
-                    <div class="panel-group" id="placePriceInfoWrap" role="tablist" aria-multiselectable="true">
-                      <div class="panel panel-default place-price-info-wrap-sub">
-                        <div class="panel-heading" role="tab" id="priceInfoTitle_1">
-                          <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#placePriceInfoWrap" href="#priceInfo_1">价目</a>
-                            <span class="pull-right priceInfoDeleteBtn"><input type="button" class="btn btn-danger btn-outline btn-sm" value="删除"></span>
-                          </h4>
-                        </div>
-                        <div id="priceInfo_1" class="panel-collapse collapse in" role="tabpanel">
-                          <div class="panel-body">
-                            <!--场地价格名称-->
-                            <div class="form-group">
-                              <label class="control-label">价格条目名称</label>
-                              <input class="form-control" type="text" readonly value="价格条目名称价格条目名称">
-                            </div>
-                            <!--场地价格简介-->
-                            <div class="form-group">
-                              <label class="control-label">价格条目简介</label>
-                              <input class="form-control" type="text" readonly value="价格条目简介价格条目简介">
-                            </div>
-                            <!--场地大小/人数-->
-                            <div class="form-group">
-                              <div class="row">
-                                <div class="col-lg-4">
-                                  <label>价格</label>
-                                  <div class="input-group">
-                                    <input type="text" class="form-control" readonly value="5000">
-                                    <span class="input-group-addon">元起</span>
-                                  </div>
-                                </div>
-                                <div class="col-lg-4">
-                                  <label>人数</label>
-                                  <div class="input-group">
-                                    <input type="text" class="form-control" readonly value="20">
-                                    <span class="input-group-addon">人</span>
-                                  </div>
-                                </div>
-                                <div class="col-lg-4">
-                                  <label>条目展示顺序</label>
-                                  <div class="input-group">
-                                    <span class="input-group-addon">第</span>
-                                    <input type="text" class="form-control" readonly value="1">
-                                    <span class="input-group-addon">条</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!--场地营业时间-->
-                            <div class="form-group">
-                              <label>营业时间（时刻）</label>
-                              <div class="form-inline">
-                                <input type="text" class="form-control" readonly value="09:00"> ~
-                                <input type="text" class="form-control" readonly value="今日">
-                                <input type="text" class="form-control" readonly value="20:00">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ============================================= -->
-                    <legend class="mt40 text-primary">场地照片:</legend>
-                    <div class="form-group">
-                      <div>照片轮播</div>
-                    </div>
                     <!--提交-->
                     <div class="confirmAdd">
-                      <!--<button type="button" class="btn btn-success btn-lg">确认添加</button>
-                      <button type="button" class="btn btn-link" data-toggle="modal" data-target=".resetForm">重新填写</button>-->
+                      <button type="button" class="btn btn-success btn-lg">确认修改</button>
+                      <button type="button" class="btn btn-link" data-toggle="modal" data-target=".resetForm">重新填写</button>
                     </div>
                   </form>
                 </div>
@@ -332,13 +211,6 @@
           </div>
         </div>
       </div>
-      <!--修改按钮组-->
-      <ul class="placeDetailChangeInfoBtn">
-        <li><a href="modifyBasicInfo.html" class="btn btn-primary btn-outline btn-sm">修改基本信息</a></li>
-        <li><a href="modifyOtherInfo.html" class="btn btn-primary btn-outline btn-sm">修改其他信息</a></li>
-        <li><a href="modifyPriceInfo.html" class="btn btn-primary btn-outline btn-sm">修改价目信息</a></li>
-        <li><a href="modifyPthotInfo.html" class="btn btn-primary btn-outline btn-sm">修改照片信息</a></li>
-      </ul>
     </div>
     <!--弹出框-->
     <!--重置表单-->

@@ -2,6 +2,10 @@ body {
   font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+ul,li {
+  list-style: none;
+}
+
 .table>tbody>tr>td,
 .table>tbody>tr>th,
 .table>tfoot>tr>td,
@@ -102,4 +106,20 @@ body {
 
 .priceInfoDeleteBtn {
 transform: translate(10px, -6px);
+}
+
+/*场地详情修改信息按钮*/
+.placeDetailChangeInfoBtn {
+  position: fixed;
+  top: 205px;
+  right: 30px;
+  padding: 10px 10px 145px 10px;
+  border-left: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, .03);
+  border-radius: 5px 0 0 5px;
+}
+
+.placeDetailChangeInfoBtn > li {
+  margin-bottom: 5px;
+  background-color: #fff;
 }

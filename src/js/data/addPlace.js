@@ -34,7 +34,7 @@ $(function () {
         '<label>价格</label>' +
         '<div class="input-group">' +
         '<input type="text" class="form-control">' +
-        '<span class="input-group-addon">起</span>' +
+        '<span class="input-group-addon">元起</span>' +
         '</div>' +
         '</div>' +
         '<div class="col-lg-4">' +
@@ -146,7 +146,7 @@ $(function () {
     allowedFileTypes: ['image'], // 限制文件类型为图片
     maxFileCount: 10, // 限制最多3张图片
     maxFileSize: 4000, // 限制图片大小，最大1024KB
-    initialCaption: '最多10张，格式为png或者jpg，大小不超过4M',
+    initialCaption: '每次最多10张，格式为png或者jpg，大小不超过4M',
     layoutTemplates: {
       main1: '{preview}\n' +
         '<div class="input-group {class}">\n' +
