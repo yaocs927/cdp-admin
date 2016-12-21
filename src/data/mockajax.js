@@ -1,9 +1,9 @@
 function mockajax() {
   $.ajax({
     type: 'GET',
-    url: '/placeList',
+    url: '/categories',
     success: function (data) {
-      // var data = JSON.stringify(data);
+      var data = JSON.parse(data);
       console.log(data);
       // $('#testbox').text(data.name)
     }

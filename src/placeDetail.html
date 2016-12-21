@@ -95,8 +95,21 @@
               <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                   <form role="form">
+                    <!--场地状态/权重-->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label>状态</label>
+                          <input class="form-control" type="text" readonly value="已上线">
+                        </div>
+                        <div class="col-lg-6">
+                          <label>权重</label>
+                          <input class="form-control" type="text" readonly value="1">
+                        </div>
+                      </div>
+                    </div>
                     <!-- ============================================= -->
-                    <legend class="text-primary">场地基本信息:</legend>
+                    <legend class="mt40 text-primary">场地基本信息:</legend>
                     <!--场地名-->
                     <div class="form-group">
                       <label class="control-label">场地名</label>
@@ -305,10 +318,21 @@
                             <!--场地营业时间-->
                             <div class="form-group">
                               <label>营业时间（时刻）</label>
-                              <div class="form-inline">
-                                <input type="text" class="form-control" readonly value="09:00"> ~
-                                <input type="text" class="form-control" readonly value="今日">
-                                <input type="text" class="form-control" readonly value="20:00">
+                              <div class="row">
+                                <div class="col-lg-6">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" readonly value="09:00">
+                                    <span class="input-group-addon">至今日</span>
+                                    <input type="text" class="form-control" readonly value="20:00">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">共</span>
+                                    <input type="text" class="form-control" readonly value="12">
+                                    <span class="input-group-addon">小时</span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -382,7 +406,7 @@
   <script src="./js/lib/bootstrap-datetimepicker.zh-CN.js"></script>
   <script src="./js/lib/metisMenu.min.js"></script>
   <script src="./js/lib/sb-admin-2.min.js"></script>
-  <script src="./js/data/addPlace.js"></script>
+  <script src="./js/data/placeDetail.js"></script>
   <script>
     $(function () {
       $('.resetFormConfirm').on('click', function () {

@@ -1,4 +1,27 @@
+// 常量
+var CUR_PLACEID = null; // 当前新增的场地ID
+var CUR_PLACE_ALBUMID = null; // 当前新增的场地相册ID
+var STATUS_CODE_YES = 0; // ajax 成功状态码
+
 $(function () {
+
+  // 获取 城市/区域/商圈 列表
+  // getCategory_1('placeCity', 'city');
+  // getCategory_1('placeRegion', 'region');
+  // getCategory_1('placeCircle', 'circle');
+
+  // 获取场地 类型/设施 列表
+  // getCategory_2('placeType', 'event');
+  // getCategory_2('placeFacility', 'amenity');
+
+
+  // $.when(getCategory_1('placeCity', 'city')).then(function () {
+  //   console.log('成功')
+  // }, function () {
+  //   console.log('失败')
+  // }, function () {
+  //   console.log('执行中')
+  // })
 
   // 新增一条价目信息
   var num = 1;
@@ -87,7 +110,7 @@ $(function () {
         '<option>今日</option>' +
         '<option>次日</option>' +
         '</select>' +
-        '<select class="form-control">' +
+        '<select class="form-control mr5">' +
         '<option>01:00</option>' +
         '<option>02:00</option>' +
         '<option>03:00</option>' +
@@ -113,6 +136,11 @@ $(function () {
         '<option>23:00</option>' +
         '<option>24:00</option>' +
         '</select>' +
+        '<div class="input-group">' +
+        '<span class="input-group-addon">共</span>' +
+        '<input type="text" class="form-control">' +
+        '<span class="input-group-addon">小时</span>' +
+        '</div>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -160,8 +188,202 @@ $(function () {
         '    <div class="file-caption-name">{caption}{size}</div>\n' +
         '</div>'
     }
-  })
+  });
   $("#addPlaceImgFile").on('change', function (e) {
     console.log(e.currentTarget.files);
+  });
+
+  // 重置表单
+  $('.resetFormConfirm').on('click', function () {
+    window.location.reload();
   })
+
+  // ==============================
+  // 确认新增场地
+  // ==============================
+
+  $('#confirmAddPlaceBtn').on('click', function () {
+    // $('#releaseNewPlace').modal();
+    // setTimeout(function () {
+    //   $('#releaseNewPlaceInfo').text('发布成功！').attr('class', 'text-success');
+    //   $('#releaseNewPlaceBtn').removeAttr('disabled').removeClass('btn-default').addClass('btn-success').text('确认');
+    // }, 5000);
+
+    // $('#releaseNewPlaceBtn').on('click', function () {
+    //   window.location.href = 'placeList.html';
+    // })
+    // addNewPlace();
+    
+    $('#testtext').text(placeBrief.replace(/\n/g, '<br />'));
+    console.log(placeBrief.indexOf('\n'));
+  });
 });
+
+
+// 获取 城市/区域/商圈 列表
+function getCategory_1(id, category) {
+  $.ajax({
+    type: 'GET',
+    url: '/categories',
+    // data: {
+    //   tag: category
+    // },
+    success: function (data) {
+      var data = JSON.parse(data);
+      if (data.errcode === STATUS_CODE_YES) {
+        $.each(data.categories, function (i, cur) {
+          $('#' + id).append('<option value="' + cur.id + '">' + cur.name + '</option>');
+        })
+      }
+    }
+  });
+}
+
+// 获取场地 类型/设施 列表
+function getCategory_2(id, category) {
+  $.ajax({
+    type: 'GET',
+    url: '/categories',
+    // data: {
+    //   tag: category
+    // },
+    success: function (data) {
+      var data = JSON.parse(data);
+      if (data.errcode === STATUS_CODE_YES) {
+        $.each(data.categories, function (i, cur) {
+          $('#' + id).find('.row').append('<div class="col-lg-3">' +
+            '<div class="checkbox">' +
+            '<label class="checkbox-inline">' +
+            '<input type="checkbox" value="' + cur.id + '">' + cur.name +
+            '</label>' +
+            '</div>' +
+            '</div>');
+        })
+      }
+    }
+  });
+}
+
+// 新增场地 接口
+function addNewPlace() {
+  var placeName = $.trim($('#placeName input[type="text"]').val()); // 场地名
+  var placeAddress = $.trim($('#placeAddress input[type="text"]').val()); // 场地地址
+  var placeNumber = $.trim($('#placeNumber input[type="text"]').val()); // 场地人数
+  var placeArea = $.trim($('#placeArea input[type="text"]').val()); // 场地面积
+  var placeKeyword = $.trim($('#placeKeyword input[type="text"]').val()); // 场地面积
+  var addNewPlacePara = {
+    name: placeName,
+    address: placeAddress,
+    area: placeArea,
+    keyword: placeKeyword,
+    number: placeNumber
+  };
+  console.log(addNewPlacePara)
+
+  // $.ajax({
+  //   type: 'POST',
+  //   url: '/services',
+  //   data: addNewPlacePara,
+  //   success: function (res) {
+  //     if (res.errcode === STATUS_CODE_YES) {
+  //       console.log('新增场地成功！')
+  //       CUR_PLACEID = res.id;
+  //       CUR_PLACE_ALBUMID = res.album;
+  //     } else {
+  //       console.log('新增场地失败！ 状态码 errcode=' + res.errcode);
+  //     }
+  //   },
+  //   error: function () {
+  //     console.log('新增场地失败，服务器错误！');
+  //   }
+  // });
+}
+
+// 新增场地简介 接口
+function addNewPlaceBrief(pid) {
+  var placeBrief = $('#placeBrief textarea').val();
+  var name = '场地简介';
+  var view = ' ';
+  var addNewPlaceBriefPara = {
+    name: name,
+    content: placeBrief,
+    view: view
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/services/' + pid + '/briefs',
+    data: addNewPlaceBriefPara,
+    success: function (res) {
+      if (res.errcode === STATUS_CODE_YES) {
+        console.log('新增场地简介成功！');
+      } else {
+        console.log('新增场地简介失败！ 状态码 errcode=' + res.errcode);
+      }
+    },
+    error: function () {
+      console.log('新增场地简介失败，服务器错误！');
+    }
+  });
+}
+
+// 新增场地类型 接口
+function addNewPlaceCategory(pid, ids) {
+  $.ajax({
+    type: 'POST',
+    url: '/services/' + pid + '/categories',
+    data: {
+      id: ids
+    },
+    success: function (res) {
+      if (res.errcode === STATUS_CODE_YES) {
+        console.log('新增场地类型成功！');
+      } else {
+        console.log('新增场地类型失败！ 状态码 errcode=' + res.errcode);
+      }
+    },
+    error: function () {
+      console.log('新增场地类型失败，服务器错误！');
+    }
+  });
+}
+
+// 新增场地价目 接口
+function addNewPlacePrice(pid, parameters) {
+  $.ajax({
+    type: 'POST',
+    url: '/services/' + pid + '/offers',
+    data: parameters,
+    success: function (res) {
+      if (res.errcode === STATUS_CODE_YES) {
+        console.log('新增场地价目成功！');
+      } else {
+        console.log('新增场地价目失败！ 状态码 errcode=' + res.errcode);
+      }
+    },
+    error: function () {
+      console.log('新增场地价目失败，服务器错误！');
+    }
+  });
+}
+
+// 新增场地照片 接口
+function addNewPlacePhoto(id, names, photos) {
+  $.ajax({
+    type: 'POST',
+    url: '/albums/' + id + '/photos',
+    data: {
+      names: names,
+      photos: photos
+    },
+    success: function (res) {
+      if (res.errcode === STATUS_CODE_YES) {
+        console.log('新增场地照片成功！');
+      } else {
+        console.log('新增场地照片失败！ 状态码 errcode=' + res.errcode);
+      }
+    },
+    error: function () {
+      console.log('新增场地照片失败，服务器错误！');
+    }
+  });
+}
