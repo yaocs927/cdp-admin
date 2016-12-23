@@ -117,7 +117,7 @@
     </div>
 
     <!--删除确认弹框-->
-    <div class="modal fade deleteConfirm" tabindex="-1">
+    <div class="modal fade" tabindex="-1" id="deleteConfirmModal">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -127,7 +127,7 @@
           <div class="modal-body">
             <p>确认删除该场地吗？</p>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" id="deleteConfirmBtnGroup">
             <button type="button" class="btn btn-link" id="deleteCancelBtn" data-dismiss="modal">取消</button>
             <button type="button" class="btn btn-primary" id="deleteConfirmBtn">确认</button>
           </div>

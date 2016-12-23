@@ -21,8 +21,6 @@ $(function () {
     },
     order: [],
     ajax: {
-      
-      // url: './js/data/placeList.json',
       url: '/services',
       dataSrc: function (data) {
         if (data.errcode === 0) {
@@ -75,21 +73,22 @@ $(function () {
       className: 'placeState changeTD',
       render: function (data, type, row, meta) {
         if (data === 1) {
-          var cur_el = '<span class="text-success" data-state="' + data + '"><b>已上线</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>';
+          var cur_el = '<span class="text-success" data-state="' + data + '"><b>公开</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>';
+        } else if (data === 2) {
+          var cur_el = '<span class="text-warning" data-state="' + data + '"><b>私密</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>'
+        } else if (data === 0) {
+          var cur_el = '<span class="text-danger" data-state="' + data + '"><b>删除</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>'
         } else {
-          var cur_el = '<span class="text-danger" data-state="' + data + '"><b>审核中</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>'
+          var cur_el = '<span class="text-info" data-state="' + data + '"><b>审核</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态" data-toggle="modal" data-target=".changeStateConfirm">修改</i></button>'
         }
         return cur_el;
       }
     }, {
       targets: [4],
+      // orderable: false,
       className: 'placeWeight changeTD',
       render: function (data, type, row, meta) {
-        // if (data === 1) {
         var cur_el = '<span class="text-primary"><b>' + data + '</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改权重" data-toggle="modal" data-target=".changeWeightConfirm">修改</i></button>';
-        // } else {
-        // var cur_el = '<span class="text-danger"><b>审核中</b></span><button type="button" class="btn btn-info btn-sm changeBtn" title="修改状态">修改</i></button>'
-        // }
         return cur_el;
       }
     }, {
@@ -98,7 +97,7 @@ $(function () {
       render: function (data, type, row, meta) {
         return '<span class="operateBtn">' +
           '<a href="../src/placeDetail.html?id=' + row.id + '" class="btn btn-info btn-sm" title="查看详情"><i class="glyphicon glyphicon-list-alt"></i></a>' +
-          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target=".deleteConfirm"><i class="glyphicon glyphicon-trash"></i></button>' +
+          '<button type="button" class="btn btn-danger btn-outline btn-sm deleteBtn" title="删除" data-toggle="modal" data-target="#deleteConfirmModal"><i class="glyphicon glyphicon-trash"></i></button>' +
           '</span>';
       }
     }],
@@ -107,22 +106,26 @@ $(function () {
     }
   });
 
+  // ==================
   // 删除数据
+  // ==================
   $('body').on('click', '.deleteBtn', function () {
     var curid = $(this).parents('tr').attr('id');
     $('#deleteConfirmBtn').attr('data-curid', curid);
   });
-  // 删去取消
-  $('#deleteCancelBtn').on('click', function () {
-    $('#deleteConfirmBtn').removeAttr('data-curid');
-  });
   // 删除确认
   $('#deleteConfirmBtn').on('click', function () {
+    $('#deleteConfirmBtnGroup').html('<button type="button" class="btn btn-primary" id="deleteConfirmBtn" disabled="disabled">删除中...</button>')
     var id = $(this).attr('data-curid');
     deleteData(id);
-    $('.deleteConfirm').modal('hide');
+    $.when(deleteData(id)).then(function () {
+      $('#deleteConfirmModal').modal('hide');
+    })
     table.ajax.reload();
-    $('#deleteConfirmBtn').removeAttr('data-curid');
+  });
+  // 模态框关闭
+  $('#deleteConfirmModal').on('hide.bs.modal', function () {
+    $('#deleteConfirmBtnGroup').html('<button type="button" class="btn btn-link" id="deleteCancelBtn" data-dismiss="modal">取消</button><button type="button" class="btn btn-primary" id="deleteConfirmBtn">确认</button>')
   });
 
   // 修改状态
