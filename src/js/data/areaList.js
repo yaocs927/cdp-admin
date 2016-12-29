@@ -171,12 +171,13 @@ $(function () {
     if (cur_text == '') {
       $('.CityTipText').html('<span class="text-danger"><b>无法发布空城市！</b></span>')
     } else {
+      // 上线
       // $.ajax({
       //   url: '/aaa?name=' + cur_text + '?tag=',
       //   type: 'POST',
       //   success: function (res) {
       //     if (errcode === 0) {
-      //       // table1.ajax.reload();
+      //       table1.ajax.reload();
       //     } else {
       //       alert('未成功添加，请检查！');
       //     }

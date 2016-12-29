@@ -196,7 +196,7 @@ $(function () {
     $('#releaseNewPlace').modal({
       keyboard: false,
       backdrop: 'static'
-    }); 
+    });
 
     // 开始上传场地信息
     // addNewPlace();
@@ -205,6 +205,7 @@ $(function () {
 
     // 上传结束提示
     setTimeout(function () {
+      // 上传成功后的样式
       $('#releaseNewPlaceInfo').text('发布成功！').attr('class', 'text-success');
       $('#releaseNewPlaceModalFooter').html('<button type="button" class="btn btn-primary btn-sm btn-outline" id="releaseNewPlaceBtn1" data-dismiss="modal">继续发布新场地</button><button type="button" class="btn btn-success btn-sm" id="releaseNewPlaceBtn2">查看场地列表</button>');
     }, 5000);
@@ -267,6 +268,10 @@ function getCategory_2(id, category) {
   });
 }
 
+
+
+
+// ====================================
 // 新增场地 接口
 function addNewPlace() {
   var placeName = $.trim($('#placeName input[type="text"]').val()), // 场地名
@@ -299,8 +304,13 @@ function addNewPlace() {
 
         // 监控信息上传
         $.when(addNewPlaceBrief(CUR_PLACEID), addNewPlaceCategory(CUR_PLACEID), addNewPlacePrice(CUR_PLACEID), addNewPlacePhoto(CUR_PLACE_ALBUMID)).then(function () {
+          // 上传成功后的样式
           $('#releaseNewPlaceInfo').text('发布成功！').attr('class', 'text-success');
-          $('#releaseNewPlaceBtn').removeAttr('disabled').removeClass('btn-default').addClass('btn-success').text('确认');
+          $('#releaseNewPlaceModalFooter').html('<button type="button" class="btn btn-primary btn-sm btn-outline" id="releaseNewPlaceBtn1" data-dismiss="modal">继续发布新场地</button><button type="button" class="btn btn-success btn-sm" id="releaseNewPlaceBtn2">查看场地列表</button>');
+
+
+          // $('#releaseNewPlaceInfo').text('发布成功！').attr('class', 'text-success');
+          // $('#releaseNewPlaceBtn').removeAttr('disabled').removeClass('btn-default').addClass('btn-success').text('确认');
         })
 
       } else {

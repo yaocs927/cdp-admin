@@ -21,7 +21,7 @@ $(function () {
     },
     order: [],
     ajax: {
-      url: '/services',
+      url: '/services', // ================================ ajax 地址
       dataSrc: function (data) {
         if (data.errcode === 0) {
           return data.services;
@@ -48,6 +48,7 @@ $(function () {
     }, {
       "data": "id"
     }],
+    // 单元格回调函数
     columnDefs: [{
       targets: [0],
       orderable: false,
@@ -117,11 +118,11 @@ $(function () {
   $('#deleteConfirmBtn').on('click', function () {
     $('#deleteConfirmBtnGroup').html('<button type="button" class="btn btn-primary" id="deleteConfirmBtn" disabled="disabled">删除中...</button>')
     var id = $(this).attr('data-curid');
-    deleteData(id);
+    deleteData(id); // ========================================================场地删除确认
     $.when(deleteData(id)).then(function () {
       $('#deleteConfirmModal').modal('hide');
     })
-    table.ajax.reload();
+    table.ajax.reload(); //  ===================
   });
   // 模态框关闭
   $('#deleteConfirmModal').on('hide.bs.modal', function () {
@@ -170,6 +171,7 @@ $(function () {
     $('#changeWeightRadio').find('input[type=radio]').parent('label').removeClass('active');
   });
 
+  
 });
 
 
